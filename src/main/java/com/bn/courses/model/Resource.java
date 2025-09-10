@@ -26,6 +26,10 @@ public class Resource {
 
     private int size;
 
+    @OneToOne
+    @JoinColumn(name = "lecture_id")
+    private Lecture lecture;
+
     @CreationTimestamp
     @Column (
             name = "create_at",
