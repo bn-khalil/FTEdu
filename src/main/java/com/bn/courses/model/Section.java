@@ -18,15 +18,13 @@ import java.time.LocalDateTime;
 @Table(name = "sections")
 public class Section {
     @Id
-    @GeneratedValue
-    private     Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @Column(
-            name = "name",
-            nullable = false,
-            columnDefinition = "TEXT"
-    )
-    private     String name;
+    @Column(nullable = false)
+    private String name;
+
+    private int sectionOrder;
 
     @CreationTimestamp
     @Column (
@@ -40,5 +38,5 @@ public class Section {
             name = "updated_at",
             insertable = false
     )
-    private     LocalDateTime updatedAt;
+    private LocalDateTime updatedAt;
 }

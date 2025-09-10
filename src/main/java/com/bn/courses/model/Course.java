@@ -9,6 +9,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,22 +19,30 @@ import java.time.LocalDateTime;
 @Table(name = "courses")
 public class Course {
     @Id
-    @GeneratedValue
-    private     Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @Column(
-            name = "title",
-            nullable = false,
-            columnDefinition = "TEXT"
-    )
-    private     String title;
+    @Column(nullable = false)
+    private String title;
 
     @Column(
             name = "description",
             nullable = false,
             columnDefinition = "TEXT"
     )
-    private     String description;
+    private String description;
+
+    @ManyToMany
+    @JoinTable(
+            name = "authors_courses",
+            joinColumns = {
+                    @JoinColumn(name = "course_id")
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(name = "author_id")
+            }
+    )
+    private List<Author> authors;
 
     @CreationTimestamp
     @Column (
@@ -47,5 +56,5 @@ public class Course {
             name = "updated_at",
             insertable = false
     )
-    private     LocalDateTime updatedAt;
+    private LocalDateTime updatedAt;
 }

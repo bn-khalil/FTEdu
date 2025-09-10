@@ -1,6 +1,5 @@
 package com.bn.courses.model;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,14 +15,16 @@ import java.time.LocalDateTime;
 @Data
 @Builder
 @Entity
-@Table(name = "lecture")
-public class Lecture {
+@Table(name = "resource")
+public class Resource {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
     private String name;
+
+    private int size;
 
     @CreationTimestamp
     @Column (
