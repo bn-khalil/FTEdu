@@ -20,12 +20,11 @@ public class Section extends BaseEntity {
     @Column(nullable = false)
     private String name;
 
-    private int sectionOrder;
-
     @ManyToOne
     @JoinColumn(name = "course_id")
     private Course course;
 
     @OneToMany(mappedBy = "section")
     private List<Lecture> lectures;
+    private int sectionOrder;
 }

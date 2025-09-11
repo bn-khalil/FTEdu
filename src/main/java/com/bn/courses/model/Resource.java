@@ -14,12 +14,11 @@ import java.time.LocalDateTime;
 @SuperBuilder
 @Data
 @Entity
-@Table(name = "resource")
+@Inheritance(strategy = InheritanceType.JOINED)
+//@DiscriminatorColumn(name = "resource_type")
 public class Resource extends BaseEntity{
     @Column(nullable = false)
     private String name;
-
-    private int size;
 
     @OneToOne
     @JoinColumn(name = "lecture_id")
