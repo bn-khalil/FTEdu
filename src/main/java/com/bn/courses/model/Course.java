@@ -1,27 +1,18 @@
 package com.bn.courses.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
-import java.time.LocalDateTime;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 import java.util.List;
 
+@EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
 @NoArgsConstructor
+@SuperBuilder
 @Data
-@Builder
 @Entity
 @Table(name = "courses")
-public class Course {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class Course extends BaseEntity{
     @Column(nullable = false)
     private String title;
 
@@ -46,18 +37,4 @@ public class Course {
 
     @OneToMany(mappedBy = "course")
     private List<Section> sections;
-
-    @CreationTimestamp
-    @Column (
-            name = "create_at",
-            updatable = false
-    )
-    private LocalDateTime createAt;
-
-    @UpdateTimestamp
-    @Column (
-            name = "updated_at",
-            insertable = false
-    )
-    private LocalDateTime updatedAt;
 }

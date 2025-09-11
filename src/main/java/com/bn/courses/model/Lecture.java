@@ -2,26 +2,17 @@ package com.bn.courses.model;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
-import java.time.LocalDateTime;
-
+@EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
 @NoArgsConstructor
+@SuperBuilder
 @Data
-@Builder
 @Entity
 @Table(name = "lecture")
-public class Lecture {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class Lecture extends BaseEntity {
     @Column(nullable = false)
     private String name;
 
@@ -32,18 +23,4 @@ public class Lecture {
     @OneToOne
     @JoinColumn(name = "resource_id")
     private Resource resource;
-
-    @CreationTimestamp
-    @Column (
-            name = "create_at",
-            updatable = false
-    )
-    private LocalDateTime createAt;
-
-    @UpdateTimestamp
-    @Column (
-            name = "updated_at",
-            insertable = false
-    )
-    private LocalDateTime updatedAt;
 }
