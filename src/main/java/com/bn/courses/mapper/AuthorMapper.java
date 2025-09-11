@@ -3,8 +3,9 @@ package com.bn.courses.mapper;
 import com.bn.courses.dto.AuthorDTO;
 import com.bn.courses.model.Author;
 
-public class AuthorMapper {
+import java.util.List;
 
+public class AuthorMapper {
     public AuthorDTO toAuthorDTO(Author author){
         return AuthorDTO.builder()
                 .id(author.getId())
@@ -22,5 +23,11 @@ public class AuthorMapper {
                 .email(authordto.getEmail())
                 .age(authordto.getAge())
                 .build();
+    }
+    public List<AuthorDTO> toAuthorDTOList(List<Author> authors){
+        return authors.stream().map(this::toAuthorDTO).toList();
+    }
+    public List<Author> toAuthorList(List<AuthorDTO> authorsdto){
+        return authorsdto.stream().map(this::toAuthor).toList();
     }
 }
