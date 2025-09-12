@@ -28,6 +28,11 @@ public interface AuthorRepository extends JpaRepository<Author, Long> {
 //
 //    List<Author> findByFirstNameContainingIgnoreCase(String firstname);
     Optional<Author> findById(Long Id);
-    @EntityGraph(attributePaths = "courses")
+    @EntityGraph(attributePaths = {
+            "courses",
+            "courses.sections",
+            "courses.sections.lectures",
+            "courses.sections.lectures.resources"
+    })
     List<Author> findAll();
 }

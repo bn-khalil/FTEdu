@@ -1,9 +1,18 @@
 package com.bn.courses.mapper;
 
-public class SectionMapper {
-    private LectureMapper lectureMapper;
+import com.bn.courses.dto.SectionDTO;
+import com.bn.courses.model.Section;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-    public AuthorMapper(LectureMapper lectureMapper) {
+import java.util.List;
+
+@Component
+public class SectionMapper {
+    private final LectureMapper lectureMapper;
+
+    @Autowired
+    public SectionMapper(LectureMapper lectureMapper) {
         this.lectureMapper = lectureMapper;
     }
 
@@ -12,27 +21,26 @@ public class SectionMapper {
                 .id(section.getId())
                 .name(section.getName())
                 .course(section.getCourse())
-                .lectures(section.getLectures())
-                .sectionOrder(section.sectionOrder()
+                .lectures(this.lectureMapper.toLectureDTOList(section.getLectures()))
+                .sectionOrder(section.getSectionOrder())
                 .build();
-            
     }
 
-    public Section toAuthor(SectionDTO sectionDTO){
-        return Author.builder()
-        .id(section.getId())
-        .name(section.getName())
-        .course(section.getCourse())
-        .lectures(section.getLectures())
-        .sectionOrder(section.sectionOrder())          
-        .build();
+    public Section toSection(SectionDTO sectionDTO){
+        return Section.builder()
+                .id(sectionDTO.getId())
+                .name(sectionDTO.getName())
+                .course(sectionDTO.getCourse())
+                .lectures(this.lectureMapper.toLectureList(sectionDTO.getLectures()))
+                .sectionOrder(sectionDTO.getSectionOrder())
+                .build();
     }
 
-    public List<AuthorDTO> toAuthorDTOList(List<Author> authors){
-        return authors.stream().map(this::toAuthorDTO).toList();
+    public List<SectionDTO> toSectionDTOList(List<Section> section){
+        return section.stream().map(this::toSectionDTO).toList();
     }
 
-    public List<Author> toAuthorList(List<AuthorDTO> authorsdto){
-        return authorsdto.stream().map(this::toAuthor).toList();
+    public List<Section> toSectionList(List<SectionDTO> sectionDTO){
+        return sectionDTO.stream().map(this::toSection).toList();
     }
 }

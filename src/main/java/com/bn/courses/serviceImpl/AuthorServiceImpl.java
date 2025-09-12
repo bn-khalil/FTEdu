@@ -6,6 +6,7 @@ import com.bn.courses.mapper.AuthorMapper;
 import com.bn.courses.model.Author;
 import com.bn.courses.repositories.AuthorRepository;
 import com.bn.courses.service.AuthorService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

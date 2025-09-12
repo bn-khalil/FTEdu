@@ -16,7 +16,7 @@ public class ResourceDTO {
 
     private String name;
 
-    private LectureDTO lecture;
+    private LectureDTO lectureDTO;
 
     private LocalDateTime createAt;
 

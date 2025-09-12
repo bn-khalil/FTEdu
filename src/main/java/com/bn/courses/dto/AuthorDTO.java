@@ -23,7 +23,7 @@ public class AuthorDTO {
 
     private Integer age;
 
-    private List<CourseDTO> courses;
+    private List<CourseDTO> coursesDTO;
 
     private LocalDateTime createAt;
 

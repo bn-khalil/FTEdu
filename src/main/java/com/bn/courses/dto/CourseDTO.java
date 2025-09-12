@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @AllArgsConstructor
@@ -20,9 +21,9 @@ public class CourseDTO {
 
     private String description;
 
-    private List<AuthorDTO> authors;
+    private List<AuthorDTO> authorsDTO;
 
-    private List<SectionDTO> sections;
+    private List<SectionDTO> sectionsDTO;
 
     private LocalDateTime createAt;
 

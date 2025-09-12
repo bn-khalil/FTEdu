@@ -1,8 +1,6 @@
 package com.bn.courses.mapper;
 
-import com.bn.courses.dto.AuthorDTO;
 import com.bn.courses.dto.CourseDTO;
-import com.bn.courses.model.Author;
 import com.bn.courses.model.Course;
 import org.springframework.stereotype.Component;
 
@@ -11,10 +9,15 @@ import java.util.List;
 @Component
 public class CourseMapper {
 
-    private SectionMapper sectionMapper;
+    private final SectionMapper sectionMapper;
+    private final AuthorMapper authorMapper;
 
-    public CourseMapper( SectionMapper sectionMapper) {
+    public CourseMapper(
+            SectionMapper sectionMapper,
+            AuthorMapper authorMapper
+    ) {
         this.sectionMapper = sectionMapper;
+        this.authorMapper = authorMapper;
     }
 
     public CourseDTO toCourseDTO(Course course){
@@ -22,7 +25,8 @@ public class CourseMapper {
                 .id(course.getId())
                 .title(course.getTitle())
                 .description(course.getDescription())
-                .sections(this.sectionMapper.toSectionDTOList(course.getSections()))
+                .sectionsDTO(this.sectionMapper.toSectionDTOList(course.getSections()))
+                .authorsDTO(this.authorMapper.toAuthorDTOList(course.getAuthors()))
                 .build();
     }
 
@@ -31,15 +35,16 @@ public class CourseMapper {
                 .id(courseDTO.getId())
                 .title(courseDTO.getTitle())
                 .description(courseDTO.getDescription())
-                .sections(this.sectionMapper.toSectionList(courseDTO.getSections()))
+                .sections(this.sectionMapper.toSectionList(courseDTO.getSectionsDTO()))
+                .authors(this.authorMapper.toAuthorList(courseDTO.getAuthorsDTO()))
                 .build();
     }
 
     public List<CourseDTO> toCourseDTOList(List<Course> courses){
-        return courses.stream().map(this::toCourseDTOList).toList();
+        return courses.stream().map(this::toCourseDTO).toList();
     }
 
     public List<Course> toCourseList(List<CourseDTO> courseDTO){
-        return courseDTO.stream().map(this::toCourseList).toList();
+        return courseDTO.stream().map(this::toCourse).toList();
     }
 }
