@@ -32,7 +32,10 @@ public class CoursesApplication {
 			AuthorService authorService
 	){
 		return args -> {
-
+			authorService.findAllAuthors().forEach(e -> System.out.println(e.getCourses()));
+//			authorService.findAuthorsById(11L);
+//			authorService.findAuthorsById(1L);
+//			authorService.findAuthorsById(2L);
 		};
 	}
 }

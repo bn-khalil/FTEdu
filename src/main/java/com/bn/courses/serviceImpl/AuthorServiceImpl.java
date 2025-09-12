@@ -44,6 +44,13 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
+    public void updateAuthor(AuthorDTO newAuthorDTO) {
+        this.authorRepository.save(
+          this.authorMapper.toAuthor(newAuthorDTO)
+        );
+    }
+
+    @Override
     public AuthorDTO crateNewAuthor(AuthorDTO authorDTO) {
         Author author = this.authorMapper.toAuthor(authorDTO);
         this.authorRepository.save(author);

@@ -1,29 +1,28 @@
 package com.bn.courses.dto;
 
+import com.bn.courses.model.Section;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Data
-public class AuthorDTO {
+public class CourseDTO {
+
     private Long id;
 
-    private String firstName;
+    private String title;
 
-    private String lastName;
+    private String description;
 
-    private String email;
+    private List<AuthorDTO> authors;
 
-    private Integer age;
-
-    private List<CourseDTO> courses;
+    private List<SectionDTO> sections;
 
     private LocalDateTime createAt;
 

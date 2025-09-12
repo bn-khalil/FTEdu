@@ -3,6 +3,7 @@ package com.bn.courses.repositories;
 import com.bn.courses.model.Author;
 import com.bn.courses.model.Course;
 import jakarta.transaction.Transactional;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -27,4 +28,6 @@ public interface AuthorRepository extends JpaRepository<Author, Long> {
 //
 //    List<Author> findByFirstNameContainingIgnoreCase(String firstname);
     Optional<Author> findById(Long Id);
+    @EntityGraph(attributePaths = "courses")
+    List<Author> findAll();
 }
