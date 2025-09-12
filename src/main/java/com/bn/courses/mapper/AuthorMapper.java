@@ -2,9 +2,11 @@ package com.bn.courses.mapper;
 
 import com.bn.courses.dto.AuthorDTO;
 import com.bn.courses.model.Author;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class AuthorMapper {
     public AuthorDTO toAuthorDTO(Author author){
         return AuthorDTO.builder()
