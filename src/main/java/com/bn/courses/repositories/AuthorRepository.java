@@ -27,12 +27,4 @@ public interface AuthorRepository extends JpaRepository<Author, Long> {
 //    void updateByNamedQuery(@Param("age") int age, @Param("id") Long id);
 //
 //    List<Author> findByFirstNameContainingIgnoreCase(String firstname);
-    Optional<Author> findById(Long Id);
-    @EntityGraph(attributePaths = {
-            "courses",
-            "courses.sections",
-            "courses.sections.lectures",
-            "courses.sections.lectures.resources"
-    })
-    List<Author> findAll();
 }

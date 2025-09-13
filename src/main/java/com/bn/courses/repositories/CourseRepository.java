@@ -11,13 +11,13 @@ import java.util.Optional;
 
 @Repository
 public interface CourseRepository extends JpaRepository<Course, Long> {
+    List<Course> findByAuthors_Id(Long id);
+
 //    List<Course> findByTitle(String title);
 //    List<Course> findByTitleIgnoreCase(String title);
 //    List<Course> findByTitleContainingIgnoreCase(String title);
 //    List<Course> findByTitleStartsWithIgnoreCase(String title);
 //    List<Course> findByTitleEndsWithIgnoreCase(String title);
 //    List<Course> findByTitleInIgnoreCase(List<String> title);
-    Optional<Course> findById(Long id);
 //    @EntityGraph(attributePaths = "sections")
-    List<Course> findAll();
 }

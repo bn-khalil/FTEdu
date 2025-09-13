@@ -23,7 +23,9 @@ public class AuthorMapper {
                 .lastName(author.getLastName())
                 .email(author.getEmail())
                 .age(author.getAge())
-                .coursesDTO(this.courseMapper.toCourseDTOList(author.getCourses()))
+//                .coursesDTO(this.courseMapper.toCourseDTOList(author.getCourses()))
+                .createAt(author.getCreateAt())
+                .updatedAt(author.getUpdatedAt())
                 .build();
     }
 
@@ -34,7 +36,9 @@ public class AuthorMapper {
                 .lastName(authordto.getLastName())
                 .email(authordto.getEmail())
                 .age(authordto.getAge())
-                .courses(this.courseMapper.toCourseList(authordto.getCoursesDTO()))
+//                .courses(this.courseMapper.toCourseList(authordto.getCoursesDTO()))
+                .createAt(authordto.getCreateAt())
+                .updatedAt(authordto.getUpdatedAt())
                 .build();
     }
 

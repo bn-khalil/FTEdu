@@ -25,8 +25,8 @@ public class CourseMapper {
                 .id(course.getId())
                 .title(course.getTitle())
                 .description(course.getDescription())
-                .sectionsDTO(this.sectionMapper.toSectionDTOList(course.getSections()))
-                .authorsDTO(this.authorMapper.toAuthorDTOList(course.getAuthors()))
+//                .sectionsDTO(this.sectionMapper.toSectionDTOList(course.getSections()))
+//                .authorsDTO(this.authorMapper.toAuthorDTOList(course.getAuthors()))
                 .build();
     }
 
@@ -35,8 +35,8 @@ public class CourseMapper {
                 .id(courseDTO.getId())
                 .title(courseDTO.getTitle())
                 .description(courseDTO.getDescription())
-                .sections(this.sectionMapper.toSectionList(courseDTO.getSectionsDTO()))
-                .authors(this.authorMapper.toAuthorList(courseDTO.getAuthorsDTO()))
+//                .sections(this.sectionMapper.toSectionList(courseDTO.getSectionsDTO()))
+//                .authors(this.authorMapper.toAuthorList(courseDTO.getAuthorsDTO()))
                 .build();
     }
 

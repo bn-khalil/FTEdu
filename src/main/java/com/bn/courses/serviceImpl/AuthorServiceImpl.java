@@ -6,7 +6,6 @@ import com.bn.courses.mapper.AuthorMapper;
 import com.bn.courses.model.Author;
 import com.bn.courses.repositories.AuthorRepository;
 import com.bn.courses.service.AuthorService;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -46,9 +45,28 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public void updateAuthor(AuthorDTO newAuthorDTO) {
-        this.authorRepository.save(
-          this.authorMapper.toAuthor(newAuthorDTO)
-        );
+        Author author = this.authorRepository
+                .findById(newAuthorDTO.getId())
+                .orElseThrow(
+                        () -> new AuthorNotFoundException("there is no user with this id = " + newAuthorDTO.getId())
+                );
+        if (newAuthorDTO.getId() != null && !author.getId().equals(newAuthorDTO.getId()))
+            author.setId(newAuthorDTO.getId());
+        if (newAuthorDTO.getFirstName() != null && !author.getFirstName().equals(newAuthorDTO.getFirstName()))
+            author.setFirstName(newAuthorDTO.getFirstName());
+        if (newAuthorDTO.getLastName() != null && !author.getLastName().equals(newAuthorDTO.getLastName()))
+            author.setLastName(newAuthorDTO.getLastName());
+        if (newAuthorDTO.getAge() != null && !author.getAge().equals(newAuthorDTO.getAge()))
+            author.setAge(newAuthorDTO.getAge());
+        if (newAuthorDTO.getEmail() != null && !author.getEmail().equals(newAuthorDTO.getEmail()))
+            author.setEmail(newAuthorDTO.getEmail());
+        author.setUpdatedAt(newAuthorDTO.getUpdatedAt());
+        this.authorRepository.save(author);
+    }
+
+    @Override
+    public void deleteAuthorById(Long id) {
+        this.authorRepository.deleteById(id);
     }
 
     @Override
