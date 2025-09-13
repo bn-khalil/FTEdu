@@ -50,4 +50,6 @@ public class AuthorController {
     public void deleteAuthor(@PathVariable Long author_id) {
         this.authorService.deleteAuthorById(author_id);
     }
+
+
 }

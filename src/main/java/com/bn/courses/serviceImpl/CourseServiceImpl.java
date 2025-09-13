@@ -1,6 +1,7 @@
 package com.bn.courses.serviceImpl;
 
 import com.bn.courses.dto.CourseDTO;
+import com.bn.courses.exception.AuthorNotFoundException;
 import com.bn.courses.mapper.CourseMapper;
 import com.bn.courses.model.Course;
 import com.bn.courses.repositories.CourseRepository;
@@ -8,6 +9,7 @@ import com.bn.courses.service.CourseService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CourseServiceImpl implements CourseService {
@@ -25,7 +27,7 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public List<CourseDTO> findAllCourses() {
-        return List.of();
+        return this.courseMapper.toCourseDTOList(courseRepository.findAll());
     }
 
     @Override
@@ -35,8 +37,14 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public CourseDTO findCourseById(Long Id) {
-        return null;
+    public CourseDTO findCourseById(Long id) {
+        Optional<Course> course = this.courseRepository.findById(id);
+
+        return course
+                .map(courseMapper::toCourseDTO)
+                .orElseThrow(
+                        ()-> new AuthorNotFoundException("exception working should create course exception hhhh")
+                );
     }
 
     @Override
