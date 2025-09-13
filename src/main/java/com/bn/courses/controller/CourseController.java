@@ -10,12 +10,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("courses")
-public class CourseConroller {
+public class CourseController {
 
     private final CourseService courseService;
 
     @Autowired
-    public CourseConroller( CourseService courseService) {
+    public CourseController(CourseService courseService) {
         this.courseService = courseService;
     }
 
