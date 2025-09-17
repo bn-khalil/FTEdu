@@ -21,7 +21,7 @@ public class SectionMapper {
                 .id(section.getId())
                 .name(section.getName())
                 .course(section.getCourse())
-                .lectures(this.lectureMapper.toLectureDTOList(section.getLectures()))
+//                .lectures(this.lectureMapper.toLectureDTOList(section.getLectures()))
                 .sectionOrder(section.getSectionOrder())
                 .build();
     }
@@ -31,7 +31,7 @@ public class SectionMapper {
                 .id(sectionDTO.getId())
                 .name(sectionDTO.getName())
                 .course(sectionDTO.getCourse())
-                .lectures(this.lectureMapper.toLectureList(sectionDTO.getLectures()))
+//                .lectures(this.lectureMapper.toLectureList(sectionDTO.getLectures()))
                 .sectionOrder(sectionDTO.getSectionOrder())
                 .build();
     }
