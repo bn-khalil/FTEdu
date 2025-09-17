@@ -1,7 +1,7 @@
 package com.bn.courses.serviceImpl;
 
 import com.bn.courses.dto.AuthorDTO;
-import com.bn.courses.exception.AuthorNotFoundException;
+import com.bn.courses.exception.NotFoundException;
 import com.bn.courses.mapper.AuthorMapper;
 import com.bn.courses.model.Author;
 import com.bn.courses.repositories.AuthorRepository;
@@ -34,12 +34,18 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
+    public List<AuthorDTO> findAllAuthorsByCourseId(Long course_Id) {
+        List<Author> authors = this.authorRepository.findAuthorsByCourses_id(course_Id);
+        return this.authorMapper.toAuthorDTOList(authors);
+    }
+
+    @Override
     public AuthorDTO findAuthorById(Long Id) {
         Optional<Author> author = this.authorRepository.findById(Id);
         return author
                 .map(authorMapper::toAuthorDTO)
                 .orElseThrow(
-                        ()-> new AuthorNotFoundException("Author with id = " + Id + " Not Found!")
+                        ()-> new NotFoundException("Author with id = " + Id + " Not Found!")
                 );
     }
 
@@ -48,7 +54,7 @@ public class AuthorServiceImpl implements AuthorService {
         Author author = this.authorRepository
                 .findById(newAuthorDTO.getId())
                 .orElseThrow(
-                        () -> new AuthorNotFoundException("there is no user with this id = " + newAuthorDTO.getId())
+                        () -> new NotFoundException("there is no user with this id = " + newAuthorDTO.getId())
                 );
         if (newAuthorDTO.getId() != null && !author.getId().equals(newAuthorDTO.getId()))
             author.setId(newAuthorDTO.getId());

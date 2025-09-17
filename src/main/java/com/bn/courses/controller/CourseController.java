@@ -1,6 +1,7 @@
 package com.bn.courses.controller;
 
 import com.bn.courses.dto.CourseDTO;
+import com.bn.courses.exception.NotFoundException;
 import com.bn.courses.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("courses")
+@RequestMapping("/courses")
 public class CourseController {
 
     private final CourseService courseService;
@@ -36,5 +37,6 @@ public class CourseController {
     public List<CourseDTO> getAllCoursesByAuthor(@PathVariable Long author_id){
         return this.courseService.findAllCoursesByAuthorId(author_id);
     }
-
+    // update
+    // delete
 }

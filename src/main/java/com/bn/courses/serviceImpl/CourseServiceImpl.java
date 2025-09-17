@@ -1,7 +1,7 @@
 package com.bn.courses.serviceImpl;
 
 import com.bn.courses.dto.CourseDTO;
-import com.bn.courses.exception.AuthorNotFoundException;
+import com.bn.courses.exception.NotFoundException;
 import com.bn.courses.mapper.CourseMapper;
 import com.bn.courses.model.Course;
 import com.bn.courses.repositories.CourseRepository;
@@ -43,7 +43,7 @@ public class CourseServiceImpl implements CourseService {
         return course
                 .map(courseMapper::toCourseDTO)
                 .orElseThrow(
-                        ()-> new AuthorNotFoundException("exception working should create course exception hhhh")
+                        ()-> new NotFoundException("No Course Found With This Id = " + id)
                 );
     }
 

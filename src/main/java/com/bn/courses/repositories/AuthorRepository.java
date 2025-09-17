@@ -15,6 +15,7 @@ import java.util.Optional;
 
 @Repository
 public interface AuthorRepository extends JpaRepository<Author, Long> {
+    List<Author> findAuthorsByCourses_id(Long id);
 //    @Modifying
 //    @Transactional
 //    @Query("update Author a set a.age = :age where a.id = :id")

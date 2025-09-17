@@ -8,6 +8,7 @@ import java.util.Optional;
 
 public interface AuthorService {
     List<AuthorDTO> findAllAuthors();
+    List<AuthorDTO> findAllAuthorsByCourseId(Long course_Id);
     AuthorDTO       findAuthorById(Long Id);
     AuthorDTO       crateNewAuthor(AuthorDTO authorDTO);
     void            updateAuthor(AuthorDTO newAuthorDTO);

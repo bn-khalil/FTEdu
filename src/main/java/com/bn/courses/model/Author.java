@@ -3,7 +3,6 @@ package com.bn.courses.model;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
@@ -12,7 +11,7 @@ import java.util.List;
 @SuperBuilder
 @Data
 @Entity
-@Table  (name = "authors")
+@Table (name = "authors")
 @NamedQueries(
         {
                 @NamedQuery(
@@ -50,5 +49,3 @@ public class Author extends BaseEntity {
     @ManyToMany(mappedBy = "authors")
     private List<Course> courses;
 }
-
-
