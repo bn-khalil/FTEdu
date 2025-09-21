@@ -9,7 +9,7 @@ import java.util.List;
 @Component
 public class LectureMapper {
 
-    private RresourceMapper resourceMapper;
+    private final RresourceMapper resourceMapper;
 
     public LectureMapper(RresourceMapper resourceMapper) {
         this.resourceMapper = resourceMapper;
@@ -19,8 +19,8 @@ public class LectureMapper {
         return LectureDTO.builder()
                 .id(lecture.getId())
                 .name(lecture.getName())
-                .section(lecture.getSection())
-                .resourceDTO(this.resourceMapper.toResourceDTO(lecture.getResource()))
+                .sectionId(lecture.getSectionId())
+//                .resourceDTO(this.resourceMapper.toResourceDTO(lecture.getResource()))
                 .build();
     }
 
@@ -28,8 +28,8 @@ public class LectureMapper {
         return Lecture.builder()
                 .id(lectureDTO.getId())
                 .name(lectureDTO.getName())
-                .section(lectureDTO.getSection())
-                .resource(this.resourceMapper.toResource(lectureDTO.getResourceDTO()))
+                .sectionId(lectureDTO.getSectionId())
+//                .resource(this.resourceMapper.toResource(lectureDTO.getResourceDTO()))
                 .build();
     }
 

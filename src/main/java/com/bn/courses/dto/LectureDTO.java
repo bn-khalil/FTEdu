@@ -17,7 +17,7 @@ public class LectureDTO {
 
     private String name;
 
-    private Section section;
+    private Long sectionId;
 
     private ResourceDTO resourceDTO;
 

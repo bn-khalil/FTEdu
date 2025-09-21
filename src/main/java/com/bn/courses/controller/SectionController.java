@@ -39,4 +39,7 @@ public class SectionController {
                 this.sectionService.createNewSection(sectionDTO)
         );
     }
+
+    // update
+    //delete
 }

@@ -16,9 +16,8 @@ public class Lecture extends BaseEntity {
     @Column(nullable = false)
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "section_id")
-    private Section section;
+    @Column(name = "section_id")
+    private Long sectionId;
 
     @OneToOne
     @JoinColumn(name = "resource_id")
