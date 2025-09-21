@@ -8,6 +8,6 @@ import java.util.List;
 
 @Repository
 public interface SectionRepository extends JpaRepository<Section, Long> {
-    List<Section> findSectionsByCourse_id(Long id);
+    List<Section> findSectionsByCourse(Long id);
 }
 

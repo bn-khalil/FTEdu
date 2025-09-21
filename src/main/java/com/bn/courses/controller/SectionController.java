@@ -19,10 +19,24 @@ public class SectionController {
         this.sectionService = sectionService;
     }
 
+    @GetMapping("/{section_id}")
+    public ResponseEntity<SectionDTO> getSection(@PathVariable Long section_id) {
+        return ResponseEntity.ok(
+                this.sectionService.findSectionById(section_id)
+        );
+    }
+
     @GetMapping("/course/{course_id}")
     public ResponseEntity<List<SectionDTO>> getSectionsWithCourse(@PathVariable Long course_id) {
         return ResponseEntity.ok(
-                this.sectionService.findServicesWithCourseId(course_id)
+                this.sectionService.findSectionsWithCourse(course_id)
+        );
+    }
+
+    @PostMapping("/create")
+    public ResponseEntity<SectionDTO> createSection(@RequestBody SectionDTO sectionDTO) {
+        return ResponseEntity.ok(
+                this.sectionService.createNewSection(sectionDTO)
         );
     }
 }

@@ -20,7 +20,7 @@ public class SectionDTO {
 
     private String name;
 
-    private Course course;
+    private Long course;
 
     private List<LectureDTO> lectures;
 

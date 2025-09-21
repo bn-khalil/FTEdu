@@ -5,6 +5,7 @@ import com.bn.courses.dto.SectionDTO;
 import java.util.List;
 
 public interface SectionService {
-    public List<SectionDTO> findServicesWithCourseId(Long id);
-    public SectionDTO findServiceById(Long id);
+    public List<SectionDTO> findSectionsWithCourse(Long id);
+    public SectionDTO findSectionById (Long id);
+    public SectionDTO createNewSection(SectionDTO sectionDTO);
 }

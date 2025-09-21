@@ -24,16 +24,24 @@ public class SectionServiceImpl implements SectionService {
     }
 
     @Override
-    public List<SectionDTO> findServicesWithCourseId(Long id) {
-        List<Section> sections = this.sectionRepository.findSectionsByCourse_id(id);
+    public List<SectionDTO> findSectionsWithCourse(Long id) {
+        List<Section> sections = this.sectionRepository.findSectionsByCourse(id);
         return this.sectionMapper.toSectionDTOList(sections);
     }
 
     @Override
-    public SectionDTO findServiceById(Long id) {
+    public SectionDTO findSectionById(Long id) {
         Section section = this.sectionRepository.findById(id).orElseThrow(
                 ()-> new NotFoundException("Section not found with this id = " + id)
         );
         return this.sectionMapper.toSectionDTO(section);
+    }
+
+    @Override
+    public SectionDTO createNewSection(SectionDTO sectionDTO) {
+        Section section = this.sectionMapper.toSection(sectionDTO);
+        Section insertedEntity = this.sectionRepository.save(section);
+        sectionDTO.setId(insertedEntity.getId());
+        return sectionDTO;
     }
 }

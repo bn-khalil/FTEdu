@@ -78,7 +78,8 @@ public class AuthorServiceImpl implements AuthorService {
     @Override
     public AuthorDTO crateNewAuthor(AuthorDTO authorDTO) {
         Author author = this.authorMapper.toAuthor(authorDTO);
-        this.authorRepository.save(author);
+        Author insertedEntity = this.authorRepository.save(author);
+        authorDTO.setId(insertedEntity.getId());
         return authorDTO;
     }
 }
