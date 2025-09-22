@@ -20,7 +20,6 @@ public class Resource extends BaseEntity{
     @Column(nullable = false)
     private String name;
 
-    @OneToOne
-    @JoinColumn(name = "lecture_id")
-    private Lecture lecture;
+    @Column(name = "lecture_id")
+    private Long lectureId;
 }

@@ -19,7 +19,6 @@ public class Lecture extends BaseEntity {
     @Column(name = "section_id")
     private Long sectionId;
 
-    @OneToOne
-    @JoinColumn(name = "resource_id")
-    private Resource resource;
+    @Column(name = "resource_id")
+    private Long resourceId;
 }

@@ -42,6 +42,7 @@ public class SectionServiceImpl implements SectionService {
         Section section = this.sectionMapper.toSection(sectionDTO);
         Section insertedEntity = this.sectionRepository.save(section);
         sectionDTO.setId(insertedEntity.getId());
+        sectionDTO.setCreateAt(insertedEntity.getCreateAt());
         return sectionDTO;
     }
 }

@@ -1,6 +1,7 @@
 package com.bn.courses.mapper;
 
 import com.bn.courses.dto.LectureDTO;
+import com.bn.courses.mapper.Resources.RresourceMapper;
 import com.bn.courses.model.Lecture;
 import org.springframework.stereotype.Component;
 
@@ -20,6 +21,7 @@ public class LectureMapper {
                 .id(lecture.getId())
                 .name(lecture.getName())
                 .sectionId(lecture.getSectionId())
+                .resourceId(lecture.getResourceId())
 //                .resourceDTO(this.resourceMapper.toResourceDTO(lecture.getResource()))
                 .build();
     }
@@ -29,6 +31,7 @@ public class LectureMapper {
                 .id(lectureDTO.getId())
                 .name(lectureDTO.getName())
                 .sectionId(lectureDTO.getSectionId())
+                .resourceId(lectureDTO.getResourceId())
 //                .resource(this.resourceMapper.toResource(lectureDTO.getResourceDTO()))
                 .build();
     }

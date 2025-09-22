@@ -16,22 +16,22 @@ public class LectureController {
         this.lectureService = lectureService;
     }
 
-    @GetMapping("/{section_id}")
+    @GetMapping("/{lecture_id}")
     public ResponseEntity<LectureDTO> getLecture(@PathVariable Long lecture_id) {
         return ResponseEntity.ok(
-                this.lectureService.findLecturesById(lecture_id)
+                this.lectureService.findLectureById(lecture_id)
         );
     }
 
-    @GetMapping("/section/{course_id}")
+    @GetMapping("/section/{section_id}")
     public ResponseEntity<List<LectureDTO>> getLecturesWithSections(@PathVariable Long section_id) {
         return ResponseEntity.ok(
-                this.lectureService.findLecturesWithSection(section_id)
+                this.lectureService.findLecturesBySectionId(section_id)
         );
     }
 
     @PostMapping("/create")
-    public ResponseEntity<LectureDTO> createSection(@RequestBody LectureDTO lectureDTO) {
+    public ResponseEntity<LectureDTO> createLecture(@RequestBody LectureDTO lectureDTO) {
         return ResponseEntity.ok(
                 this.lectureService.createNewLecture(lectureDTO)
         );
@@ -39,4 +39,5 @@ public class LectureController {
 
     // update
     //delete
+
 }

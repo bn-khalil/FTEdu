@@ -26,7 +26,7 @@ public class Section extends BaseEntity {
     )
     private Long course;
 
-    @OneToMany(mappedBy = "section")
+    @OneToMany(mappedBy = "sectionId")
     private List<Lecture> lectures;
     private int sectionOrder;
 }

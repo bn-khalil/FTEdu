@@ -1,4 +1,4 @@
-package com.bn.courses.dto;
+package com.bn.courses.dto.resourcesDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,14 +11,14 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 @Data
-public class LectureDTO {
+public class TextResourceDTO {
     private Long id;
 
     private String name;
 
-    private Long sectionId;
+    private String content;
 
-    private Long resourceId;
+    private Long lectureId;
 
     private LocalDateTime createAt;
 

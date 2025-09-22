@@ -1,6 +1,7 @@
-package com.bn.courses.mapper;
+package com.bn.courses.mapper.Resources;
 
 import com.bn.courses.dto.ResourceDTO;
+import com.bn.courses.mapper.LectureMapper;
 import com.bn.courses.model.Resource;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class RresourceMapper {
+public class  RresourceMapper {
 
     private final LectureMapper lectureMapper;
 
@@ -20,7 +21,8 @@ public class RresourceMapper {
         return ResourceDTO.builder()
                 .id(resource.getId())
                 .name(resource.getName())
-                .lectureDTO(this.lectureMapper.toLectureDTO(resource.getLecture()))
+                .lectureId(resource.getLectureId())
+//                .lectureDTO(this.lectureMapper.toLectureDTO(resource.getLecture()))
                 .build();
     }
 
@@ -28,7 +30,8 @@ public class RresourceMapper {
         return Resource.builder()
                 .id(resourceDTO.getId())
                 .name(resourceDTO.getName())
-                .lecture(this.lectureMapper.toLecture(resourceDTO.getLectureDTO()))
+                .lectureId(resourceDTO.getLectureId())
+//                .lecture(this.lectureMapper.toLecture(resourceDTO.getLectureDTO()))
                 .build();
     }
 
